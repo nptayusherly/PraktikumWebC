@@ -6,7 +6,7 @@
 </head>
 <body>
 <center>
-    <h1>Daftar Rekomendasi Drama Korea</h1>
+    <h1>Daftar Rekomendasi Anime</h1>
     <hr/><br><br><br><br>
     <table border="10" bordercolor="white">
         <?php
