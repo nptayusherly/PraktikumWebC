@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Daftar Drama</title>
+    <title>Daftar Rekomendasi Anime</title>
     <link rel="stylesheet" type="text/css" href=tampil_pagination.css />
 </head>
 <body>
@@ -14,12 +14,12 @@
             $batas = 3;
             $page = isset($_GET['halaman'])?(int)$_GET["halaman"] : 1;
             $mulai = ($page>1) ? ($page * $batas) - $batas : 0;
-            $tampil = mysqli_query($conn, "SELECT * FROM menu_drama ORDER BY id ASC LIMIT $mulai, $batas") or die (mysqli_error($conn));
+            $tampil = mysqli_query($conn, "SELECT * FROM judul_anime ORDER BY id ASC LIMIT $mulai, $batas") or die (mysqli_error($conn));
             $no = $mulai+1;
             while($data = mysqli_fetch_array($tampil)) { 
                 $id = $data["id"];
                 $gambar = $data['image'];
-                $nama = $data['nama_drama']; ?>
+                $nama = $data['nama_anime']; ?>
                     
                 <td>
                     <img src = "img/<?php echo $gambar; ?>" class="card-img-top" width="300" height="300"><br>
@@ -29,7 +29,7 @@
             <?php $no++; }; ?>
     </table>
     <?php
-        $hitung = mysqli_query($conn,"SELECT * FROM menu_drama") or die (mysqli_error($conn));
+        $hitung = mysqli_query($conn,"SELECT * FROM judul_anime") or die (mysqli_error($conn));
         $jmldata    = mysqli_num_rows($hitung);
   
     ?>
