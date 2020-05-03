@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>To Do List</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: courier new;  
+        }
+        table{
+            border-collapse: collapse;
+            margin: 0% 5% 0% 0%;
+        }
+        tbody{
+            color: #000000;
+
+        }
+
+        table th, table td {
+            padding: 10px 10px;
+            border: 2px solid #000000;
+        }
+        table tr {
+            font: normal 12px Tahoma, Geneva, sans-serif, black;
+            background: #f9f9f9;
+            text-align: center;
+        }
+        table td {
+            -webkit-transition: all 0.7s ease-in-out 0s;
+            -moz-transition: all 0.7s ease-in-out 0s;
+            -o-transition: all 0.7s ease-in-out 0s;
+            transition: all 0.7s ease-in-out 0s;
+            font-size: 12pt;
+        }
+
+        table tr:nth-child(2n+0) {
+            background: #f9f9f9;
+            box-shadow: 0 1px 2px black, 0 0 100px rgba(0, 0, 0, 0.15) inset;
+        }
+
+        table td:hover, table td:nth-child(2n+0):hover {
+            background: #d3d3d3;
+            box-shadow: 0 1px 2px black, 0 0 100px rgba(0, 0, 0, 0.15) inset;
+
+        }
+        table th {
+            background: #27496d;
+            color: black;
+            text-shadow: 1px 1px 0 #FFE4B5;
+            box-shadow: 0 1px 2px black, 0 0 100px rgba(0, 0, 0, 0.15) inset;
+            font: bold 12px Arial, Helvetica, sans-serif;
+        }
+
+        .tabel {
+            width: 30%;
+            min-height: 100px;
+            padding: 2%;
+            border: 1px solid #000000;
+            background-color: whitesmoke;
+            margin: auto;
+        }
+
+        .tabel input[type=text]{
+            width: 400px;
+            height: 40px;
+            padding-left: 1%; 
+            font-size: 12px;
+            margin: 0% 0% 2% 0%;
+            }
+
+        .tabel input[type=button] {
+            padding: 1% 1%;
+            display: inline-block;
+            background-color: #808080;
+            color: black;
+            cursor: pointer;
+            margin: 1% 0% 2% 0%;
+        }
+
+        h3{
+            height: 30px;
+            width: 30%;
+            padding: 2%;
+            font-weight: bold;
+            color: black;
+            background-color: #808080;
+            text-align: center;
+            margin: auto;
+            border: 1px solid #000000;
+        }
+
+    </style>
+  </head>
+
+  <body>
+    <h3>To Do List</h3>
+    <div class="tabel">
+        <form id="id_form">
+            <table style="margin: auto; width: 100%;">                 
+            <tr>
+                <td>Masukan Catatan Anda</td>
+            </tr>
+            <tr>
+                <td><input type="text" id="kata" placeholder="Masukan catatan anda.." autocomplete="off"/></td>
+            </tr>
+            </table>
+            <input type="button" value="+" id="plus" onclick="Tambah('id_form','TabelData')" />
+            <input type="button" value="Reset" id="reset" onclick="ClearText()" />
+            <br><br><br>
+
+            <table id="TabelData" width="auto" border="1"></table>
+        </form>
+        <input type="button" name="centang" id="checkbox" value="Select All" onclick="SelectAll()">
+        <input type="button" name="centang" id="checkbox" value="UnSelect All" onclick="UnSelectAll()">
+        <input type="button" value="Hapus" id="hapus" onclick="Hapus('TabelData')" />
+    </div>
+</body>
+
+<script type="text/javascript">
+function Tambah(formID, tabelID) {              
+    var tabel = document.getElementById(tabelID);
+    var form = document.forms[formID];
+    var hitung_baris = tabel.rows.length;
+    var baris = tabel.insertRow(hitung_baris);                
+    var kolom1 = baris.insertCell(0);
+    var element1 = document.createElement("input");
+        element1.type = "checkbox";
+        element1.name = "chkbox";
+        kolom1.appendChild(element1);
+    var kolom2 = baris.insertCell(1);
+        kolom2.innerHTML = form.elements['kata'].value;
+    ClearText();            
+}
+
+function Hapus(tabelID) {
+    var tanya = confirm("Apakah Anda Akan Menghapus Data Ini ?");
+    try {
+        var tabel = document.getElementById(tabelID);
+        var hitung_baris = tabel.rows.length;
+        for (var i = 0; i < hitung_baris; i++) {
+            var baris = tabel.rows[i];
+            var chkbox = baris.cells[0].childNodes[0];
+            var a = 0;
+            if (null != chkbox && true == chkbox.checked) {
+                a++;
+                if(tanya == true){
+                  tabel.deleteRow(i);
+                  hitung_baris--;
+                  i--;
+                }
+                else if(a == hitung_baris){
+                  tabel.deleteRow(i);
+                  hitung_baris--;
+                  i--;
+                }
+            }
+        }
+    } catch(e) {
+        alert(e);
+    }
+}
+
+function ClearText(){
+    document.getElementById("kata").value= '';
+}
+
+function SelectAll(){
+    var items = document.getElementsByName('chkbox');
+    for(var i=0; i<items.length; i++){
+        if(items[i].type=='checkbox'){
+            items[i].checked=true;
+        }
+    }
+}
+
+function UnSelectAll(){
+    var items = document.getElementsByName('chkbox');
+    for(var i=0; i<items.length; i++){
+        if(items[i].type=='checkbox'){
+            items[i].checked=false;
+        }
+    }
+}
+</script>
+</html>
