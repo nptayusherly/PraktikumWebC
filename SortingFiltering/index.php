@@ -31,10 +31,10 @@ $db = new mysqli(HOST, USER, PASS, DB);
 	<div class="container">
 		<h2 align="center" style="margin: 30px;">DATA MAHASISWA</h2>
 		<?php 
-			$s_jurusan="";
+			$s_jeniskelamin="";
             $s_keyword="";
             if (isset($_POST['search'])) {
-                $s_jurusan = $_POST['s_jurusan'];
+                $s_jeniskelamin = $_POST['s_jeniskelamin'];
                 $s_keyword = $_POST['s_keyword'];
             }
 		?>
@@ -43,10 +43,10 @@ $db = new mysqli(HOST, USER, PASS, DB);
 			    <div class="col-sm-12"><h4>Cari</h4></div>
 			    <div class="col-sm-3">
 			        <div class="form-group">
-			            <select name="s_jurusan" id="s_jurusan" class="form-control">
-			                <option value="">Filter Jurusan</option>
-			                <option value="Sistem Informasi" <?php if ($s_jurusan=="Sistem Informasi"){ echo "selected"; } ?>>Sistem Informasi</option>
-			                <option value="Teknik Informatika" <?php if ($s_jurusan=="Teknik Informatika"){ echo "selected"; } ?>>Teknik Informatika</option>
+			            <select name="s_jeniskelamin" id="s_jeniskelamin" class="form-control">
+			                <option value="">Filter Jenis Kelamin</option>
+			                <option value="Laki-laki" <?php if ($s_jeniskelamin=="Laki-laki"){ echo "selected"; } ?>>Laki-laki</option>
+			                <option value="Perempuan" <?php if ($s_jeniskelamin=="Perempuan"){ echo "selected"; } ?>>Perempuan</option>
 			            </select>
 			        </div>
 			    </div>
@@ -68,18 +68,18 @@ $db = new mysqli(HOST, USER, PASS, DB);
 					<td>NIM</td>
 		            <td>Nama Mahasiswa</td>
 		            <td>Alamat</td>
-		            <td>Jurusan</td>
+		            <td>Fakultas</td>
 		            <td>Jenis Kelamin</td>
 		        </tr>
 		    </thead>
 		    <tbody>
 		        <?php
-		            $search_jurusan = '%'. $s_jurusan .'%';
+		            $search_jeniskelamin = '%'. $s_jeniskelamin .'%';
 		            $search_keyword = '%'. $s_keyword .'%';
 		            $no = 1;
-		            $query = "SELECT * FROM tbmahasiswa WHERE jurusan LIKE ? AND (nama_mahasiswa LIKE ? OR alamat LIKE ? OR jurusan LIKE ? OR jenis_kelamin LIKE ? OR nim LIKE ?) ORDER BY nim ASC";
+		            $query = "SELECT * FROM tbmahasiswa WHERE jenis_kelamin LIKE ? AND (nama_mahasiswa LIKE ? OR alamat LIKE ? OR jenis_kelamin LIKE ? OR jenis_kelamin LIKE ? OR nim LIKE ?) ORDER BY nim ASC";
 		            $dewan1 = $db->prepare($query);
-		            $dewan1->bind_param('ssssss', $search_jurusan, $search_keyword, $search_keyword, $search_keyword, $search_keyword, $search_keyword);
+		            $dewan1->bind_param('ssssss', $search_jeniskelamin, $search_keyword, $search_keyword, $search_keyword, $search_keyword, $search_keyword);
 		            $dewan1->execute();
 		            $res1 = $dewan1->get_result();
 
@@ -89,7 +89,7 @@ $db = new mysqli(HOST, USER, PASS, DB);
 							$nim = $row['nim'];
 		                    $nama_mahasiswa = $row['nama_mahasiswa'];
 		                    $alamat = $row['alamat'];
-		                    $jurusan = $row['jurusan'];
+		                    $fakultas = $row['fakultas'];
 		                    $jenis_kelamin = $row['jenis_kelamin'];
 		                    
 		        ?>
@@ -98,7 +98,7 @@ $db = new mysqli(HOST, USER, PASS, DB);
 		                <td><?php echo $nim; ?></td>
 		                <td><?php echo $nama_mahasiswa; ?></td>
 		                <td><?php echo $alamat; ?></td>
-		                <td><?php echo $jurusan; ?></td>
+		                <td><?php echo $fakultas; ?></td>
 		                <td><?php echo $jenis_kelamin; ?></td>
 
 		            </tr>
