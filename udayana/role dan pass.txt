@@ -1,0 +1,11 @@
+Admin 
+username : 1234512345
+password : admin123
+
+Mahasiswa 
+username : 1708561053
+password : namaorang
+
+Dosen 
+username : 111222333
+password : namaorang

@@ -25,14 +25,14 @@ $krs = mysqli_fetch_assoc($queryKRS);
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Dashboard Sistem Informasi Udayana</title>
+        <title>SIMAK Udayana</title>
         <link href="css/styles.css" rel="stylesheet" />
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-            <a class="navbar-brand" href="index.html">Sistem Perkuliahan</a>
+            <a class="navbar-brand" href="index.php">Sistem Perkuliahan</a>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i>Hai, <?= $nama; ?> </a>
@@ -88,7 +88,7 @@ $krs = mysqli_fetch_assoc($queryKRS);
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid">
-                        <h3 class="mt-4">Membuat Kelas</h3>
+                        <h3 class="mt-4">Mengedit Kelas</h3>
                         <div class="card mb-4">
                             <form form action="function.php?act=editKelas&id_kelas=<?= $id_kelas; ?>" id="buat" method="POST" >
                                 <div class="form-group ml-4 py-3 mb-0">
@@ -119,7 +119,7 @@ $krs = mysqli_fetch_assoc($queryKRS);
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid">
                         <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Sistem Informasi Udayana 2020</div>
+                            <div class="text-muted">&copy; 2016 USDI - Universitas Udayana</div>
                             <div>
                                 <a href="#">Privacy Policy</a>
                                 &middot;

@@ -5,7 +5,6 @@
     $nama = $_SESSION['nama'];
     $role = $_SESSION['role'];
 
-    // $queryMahasiswa = mysqli_query($koneksi, "SELECT * FROM mahasiswa");
 
 ?>
 
@@ -23,20 +22,21 @@
             <th>Status</th>
         </tr>
     </thead>
-    <?php $i=1; ?>
-    <?php foreach ($queryMahasiswa as $data) :  ?>
-        <tr>
-            <td><?= $i++; ?></td>
-            <?php if($role == "0") { ?>
-            <td><a href="" class="badge badge-primary ">Edit</a></td>
-            <?php } ?>
-            <td><?= $data['nim']; ?></td>
-            <td><?= $data['nama']; ?></td>
-            <td><?= $data['email']; ?></td>
-            <td><?= $data['alamat']; ?></td>
-            <td><?= $data['status']; ?></td>
-        </tr>
-    <?php endforeach; ?>
+    <tbody>
+        <?php $i=1; ?>
+        <?php foreach ($queryMahasiswa as $data) :  ?>
+            <tr>
+                <td><?= $i++; ?></td>
+                <?php if($role == "0") { ?>
+                <td><a href="" class="badge badge-primary ">Edit</a></td>
+                <?php } ?>
+                <td><?= $data['nim']; ?></td>
+                <td><?= $data['nama']; ?></td>
+                <td><?= $data['email']; ?></td>
+                <td><?= $data['alamat']; ?></td>
+                <td><?= $data['status']; ?></td>
+            </tr>
+        <?php endforeach; ?>
     
     </tbody>
 </table>

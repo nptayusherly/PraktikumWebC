@@ -32,7 +32,7 @@ if( isset($_SESSION["login"])) {
     <div class="card text-center">
         <div class="card-body ">
             <form id="loginForm" method="POST" action="function.php?act=login">
-                <span class="font">Login Mahasiswa</span>
+                <span class="font">Login</span>
                 <div class="form-row">
                     <input type="text" class="form-control" id="username" name="username" placeholder="Username">
                 </div>

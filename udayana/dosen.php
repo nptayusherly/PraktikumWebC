@@ -21,14 +21,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Dashboard Sistem Informasi Udayana</title>
+        <title>SIMAK Udayana</title>
         <link href="css/styles.css" rel="stylesheet" />
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-            <a class="navbar-brand" href="index.html">Sistem Perkuliahan</a>
+            <a class="navbar-brand" href="index.php">Sistem Perkuliahan</a>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i>Hai, <?= $nama; ?> </a>
@@ -87,8 +87,10 @@
                         <h3 class="mt-4">Daftar Dosen</h3>
                         <div class="card mb-4">
                         <?php if($role == "0") { ?>
-                            <div class="regis ml-4 mt-3 px-4">
-                                <a href="register_dosen.php" class="btn btn-secondary">Registrasi Dosen</a>
+                            <div class="container">
+                                <div class="regis mt-3">
+                                    <a href="register_dosen.php" class="btn btn-secondary">Registrasi Dosen</a>
+                                </div>
                             </div>
                         <?php } ?>
                             <div class="card-body">
@@ -134,7 +136,7 @@
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid">
                         <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Sistem Informasi Udayana 2020</div>
+                            <div class="text-muted">&copy; 2016 USDI - Universitas Udayana</div>
                             <div>
                                 <a href="#">Privacy Policy</a>
                                 &middot;
